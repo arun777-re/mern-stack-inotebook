@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+  font-family: sans-serif;
+  font-weight: bolder;
+  background: linear-gradient(45deg, rgb(189, 178, 178), rgb(206, 116, 116));
+
+}
