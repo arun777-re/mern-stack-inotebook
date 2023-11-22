@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import {Link,useLocation } from 'react-router-dom';
 
-export default function Navbar() {
+export default function Navbar(props) {
     const location  = useLocation();
     const history=useNavigate();
     useEffect(() => {
@@ -13,6 +13,7 @@ export default function Navbar() {
     const handleonclick=()=>{
         localStorage.removeItem('token');
          history('/login')
+         props.showalert("success","Logout successfully")
     }
     
     
@@ -20,7 +21,7 @@ export default function Navbar() {
     <div>
 
 
-<nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+<nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
   <div className="container-fluid">
     <Link className="navbar-brand" to="#">iNotebook</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,6 +37,10 @@ export default function Navbar() {
         
         
         </li>
+        <li className="nav-item">
+          <Link className={`nav-link ${location.pathname==="/emailverify"?"active":""}`} aria-current="page" to="/emailverify"></Link>
+        </li>
+      
         
        
       </ul>
@@ -44,9 +49,7 @@ export default function Navbar() {
         <Link className="btn btn-primary mx-2" type="submit" to='/signup'>Signup</Link>
       </form>:<button className="btn btn-primary" onClick={handleonclick}>Logout</button>}
     </div>
-    <div className="d-flex">
-       <h3>hello</h3>
-    </div>
+   
   </div>
 </nav>
     </div>

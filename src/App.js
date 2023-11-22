@@ -9,6 +9,7 @@ import Alert from './components/Alert';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import { useState } from 'react';
+import Emailverify from './components/Emailverify';
 
 function App() {
   const [alert, setalert] = useState(null);
@@ -25,13 +26,14 @@ function App() {
     <>
     <NoteState>
     <BrowserRouter>
-    <Navbar/>
+    <Navbar showalert={showalert}/>
     <Alert alert={alert}/>
     <Routes>
        <Route path='/' element={<Home showalert={showalert}/>}/>
        <Route path='/about' element={<About/>}/>
        <Route path='/login' element={<Login showalert={showalert}/>}/>
        <Route path='/signup' element={<Signup showalert={showalert}/>}/>
+       <Route path='/emailverify' element={<Emailverify showalert={showalert}/>}/>
     </Routes>
     
     

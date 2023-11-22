@@ -18,7 +18,7 @@ export default function Addnotes() {
   };
 
   return (
-    <div className>
+    <div className='my-5'>
       <form>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">

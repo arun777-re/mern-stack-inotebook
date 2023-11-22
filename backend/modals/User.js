@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const {Schema}= mongoose;
 
 
+
 const userSchema = new Schema({
     name:{
         type:String,
@@ -21,6 +22,10 @@ const userSchema = new Schema({
         type:String,
         
     },
+    verified:{
+        type:Boolean,
+        default:false
+    },
     
     date:{
         type:Date,
@@ -28,5 +33,8 @@ const userSchema = new Schema({
     }
 });
 const User =  mongoose.model('user',userSchema);
-User.createIndexes();
-module.exports = User;
+
+
+
+
+module.exports = {User}

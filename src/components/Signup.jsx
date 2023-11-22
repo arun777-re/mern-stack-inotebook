@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+// import '../Style.css'
 import { useNavigate } from 'react-router-dom';
 export default function Signup() {
     const history = useNavigate()
@@ -16,9 +17,12 @@ export default function Signup() {
      console.log(data)
      if(data.success){
       localStorage.setItem('token',data.authtoken);
-      history('/')
+      setTimeout(()=>{
+        history('/')
+      },1500)
+      history('/emailverify')
 
-     }
+     };
     }
     const handleonchange = (e)=>{
      e.preventDefault();

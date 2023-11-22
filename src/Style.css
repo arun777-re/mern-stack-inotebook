@@ -1,0 +1,16 @@
+/* body{
+    background-image: url('https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:white
+} */
+.mmm{
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+    padding:0px;
+    background-color:rgb(207, 164, 164);
+    background-size: cover;
+    background-repeat:no-repeat;
+
+    }
