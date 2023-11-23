@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-export default function About() {
+export default function About(props) {
   const host = "http://localhost:5000";
   const [user, setuser] = useState({ name: "", email: "", date: "" });
   const getuser = async () => {
+    props.setProgress(10)
     // api call
     const response = await fetch(`${host}/api/user/getuser`, {
       method: "GET",
@@ -12,12 +13,23 @@ export default function About() {
         "auth-token": localStorage.getItem("token"),
       },
     });
+    props.setProgress(50)
     const json = await response.json();
+    props.setProgress(70)
     console.log(json);
+    // props.setProgress(50)
     setuser(json);
+    props.setProgress(100);
+    props.showalert("success","user")
+    
   };
   useEffect(() => {
-    getuser();
+    props.setProgress(30)
+    setTimeout(()=>{
+      getuser();
+
+    })
+    props.setProgress(100);
     // eslint-disable-next-line
   }, []);
 

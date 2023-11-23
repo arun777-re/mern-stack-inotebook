@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 // import '../Style.css'
 import { useNavigate } from 'react-router-dom';
-export default function Signup() {
+export default function Signup(props) {
+  const {showalert,setProgress} = props
     const history = useNavigate()
     const [user, setuser] = useState({name:"",email:"",password:"",cpassword:""})
     const handleonsubmit =async(e)=>{
       e.preventDefault()
+      setProgress(10)
      const response=await fetch(`http://localhost:5000/api/user/createuser`,{
        method:"POST",
        headers:{
@@ -13,13 +15,17 @@ export default function Signup() {
        },
        body:JSON.stringify({name:user.name,email:user.email,password:user.password,cpassword:user.cpassword})
      });
+     setProgress(30)
      const data = await response.json();
      console.log(data)
+     setProgress(50)
      if(data.success){
       localStorage.setItem('token',data.authtoken);
       setTimeout(()=>{
         history('/')
       },1500)
+      setProgress(100);
+      showalert("success","Signup successfully")
       history('/emailverify')
 
      };
